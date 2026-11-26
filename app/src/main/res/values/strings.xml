@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">PIN DROP</string>
+    <string name="brand_name">NexStudio</string>
+    <string name="brand_presents">PRESENTS</string>
+    <string name="game_title">PIN DROP</string>
+    <string name="game_tagline">One tap. One chance.</string>
+
+    <!-- Main Menu -->
+    <string name="menu_play">PLAY</string>
+    <string name="menu_daily_challenge">DAILY CHALLENGE</string>
+    <string name="menu_daily_completed">DAILY CLEARED</string>
+    <string name="menu_leaderboard">LEADERBOARD</string>
+    <string name="menu_settings">SETTINGS</string>
+    <string name="menu_pin_styles">PIN STYLES</string>
+    <string name="menu_best_score">BEST SCORE: %1$d</string>
+
+    <!-- Gameplay -->
+    <string name="gameplay_level_label">STAGE %1$d</string>
+    <string name="gameplay_daily_label">DAILY</string>
+    <string name="gameplay_tap_hint">TAP ANYWHERE TO DROP PIN</string>
+    <string name="gameplay_level_clear">STAGE %1$d CLEAR</string>
+    <string name="gameplay_pause_title">PAUSED</string>
+    <string name="gameplay_resume">RESUME</string>
+    <string name="gameplay_restart">RESTART</string>
+    <string name="gameplay_quit">MAIN MENU</string>
+    <string name="cd_pause_game">Pause game</string>
+    <string name="cd_back">Navigate back</string>
+
+    <!-- Game Over -->
+    <string name="game_over_title">GAME OVER</string>
+    <string name="daily_victory_title">DAILY COMPLETE</string>
+    <string name="game_over_new_best">NEW BEST SCORE</string>
+    <string name="game_over_your_score">Your Score: %1$d</string>
+    <string name="game_over_best_score">Best Score: %1$d</string>
+    <string name="game_over_stage_reached">Stage Reached: %1$d</string>
+    <string name="game_over_try_again">TRY AGAIN</string>
+    <string name="game_over_home">HOME</string>
+    <string name="game_over_share_score">SHARE SCORE</string>
+    <string name="share_score_chooser_title">Share PIN DROP Score</string>
+    <string name="share_score_message">I scored %1$d in PIN DROP! Can you beat me? #NexStudio</string>
+    <string name="unlocked_style_banner">UNLOCKED PIN STYLE: %1$s</string>
+
+    <!-- Leaderboard -->
+    <string name="leaderboard_title">LEADERBOARD</string>
+    <string name="leaderboard_classic_best">CLASSIC BEST</string>
+    <string name="leaderboard_daily_best">DAILY BEST</string>
+    <string name="leaderboard_daily_streak">DAILY STREAK</string>
+    <string name="leaderboard_top_runs">TOP RUNS</string>
+    <string name="leaderboard_empty">No runs recorded yet.\nDrop your first pin to claim #1.</string>
+    <string name="leaderboard_run_meta">LVL %1$d • %2$s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">SETTINGS</string>
+    <string name="settings_sound_title">Minimal Sound Effects</string>
+    <string name="settings_sound_desc">Synthesized monochrome audio cues</string>
+    <string name="settings_haptics_title">Haptic Feedback</string>
+    <string name="settings_haptics_desc">Tactile pulse on pin lock and collision</string>
+    <string name="settings_reset_title">Reset Local Scores</string>
+    <string name="settings_reset_desc">Clear saved high scores, runs, and daily streak</string>
+    <string name="settings_reset_confirm_title">Reset All Progress?</string>
+    <string name="settings_reset_confirm_body">This will permanently clear your local best scores, leaderboard history, and unlocked styles.</string>
+    <string name="settings_reset_confirm_btn">RESET</string>
+    <string name="settings_cancel_btn">CANCEL</string>
+    <string name="settings_about_title">NexStudio</string>
+    <string name="settings_about_desc">PIN DROP v1.0 • Offline Precision Arcade</string>
+
+    <!-- Pin Styles -->
+    <string name="styles_title">PIN STYLES</string>
+    <string name="styles_subtitle">Unlock minimal silhouettes through mastery</string>
+    <string name="styles_equipped">EQUIPPED</string>
+    <string name="styles_select">EQUIP</string>
+    <string name="styles_locked">LOCKED</string>
+</resources>

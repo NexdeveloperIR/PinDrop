@@ -1,0 +1,6 @@
+{
+  "name": "PIN DROP",
+  "description": "Minimal monochrome precision arcade game by NexStudio. Tap to fire pins into a rotating ring without colliding.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
