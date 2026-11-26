@@ -11,6 +11,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HAS_SIGNING: ${{ secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '' }}
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -33,7 +35,7 @@ jobs:
           gradle-version: '9.3.1'
 
       - name: Prepare release signing key
-        if: ${{ secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '' }}
+        if: env.HAS_SIGNING == 'true'
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
@@ -48,7 +50,7 @@ jobs:
         run: gradle --no-daemon assembleRelease
 
       - name: Build test APK (no release key configured)
-        if: ${{ !(secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '') }}
+        if: env.HAS_SIGNING != 'true'
         run: gradle --no-daemon assembleDebug
 
       - name: Upload APK artifact
