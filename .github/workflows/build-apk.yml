@@ -1,0 +1,60 @@
+name: Build PinDrop APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android platform
+        run: sdkmanager "platforms;android-36-ext1" "build-tools;36.0.0"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
+
+      - name: Prepare release signing key
+        if: ${{ secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '' }}
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/pindrop-upload.jks"
+          echo "KEYSTORE_PATH=$RUNNER_TEMP/pindrop-upload.jks" >> "$GITHUB_ENV"
+
+      - name: Build signed release APK
+        if: ${{ secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '' }}
+        env:
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle --no-daemon assembleRelease
+
+      - name: Build test APK (no release key configured)
+        if: ${{ !(secrets.KEYSTORE_BASE64 != '' && secrets.STORE_PASSWORD != '' && secrets.KEY_PASSWORD != '') }}
+        run: gradle --no-daemon assembleDebug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PinDrop-APK-${{ github.run_number }}
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error
+          retention-days: 14
