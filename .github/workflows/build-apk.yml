@@ -46,7 +46,7 @@ jobs:
             export KEYSTORE_PATH="$RUNNER_TEMP/pindrop-upload.jks"
             gradle --no-daemon assembleRelease
           else
-            keytool -genkeypair -v -keystore debug.keystore -alias android -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US"
+            keytool -genkeypair -v -keystore debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US"
             gradle --no-daemon assembleDebug
           fi
 
